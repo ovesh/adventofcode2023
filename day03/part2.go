@@ -24,7 +24,7 @@ func findNeighbors(g *gear, numbers []*number2) {
 }
 
 func Part2() int {
-	lines := strings.Split(input, "\n")
+	lines := strings.Split(sample, "\n")
 	lines = lines[1:]
 	sum := 0
 	matrix := make([][]rune, len(lines))
