@@ -9,3 +9,12 @@ func MustAtoi(s string) int {
 	}
 	return res
 }
+
+func SliceAtoi(slice []string) []int {
+	res := make([]int, len(slice))
+	for i, s := range slice {
+		res[i] = MustAtoi(s)
+	}
+
+	return res
+}
