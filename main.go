@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"ovesh.name/advent2023/day05"
+	"ovesh.name/advent2023/day06"
 )
 
 func main() {
-	fmt.Println(day05.Part2())
+	fmt.Println(day06.Part2())
 }
