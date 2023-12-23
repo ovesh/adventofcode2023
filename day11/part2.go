@@ -1,15 +1,14 @@
 package day11
 
 import (
-	"fmt"
 	"strings"
 )
 
-type coord struct {
-	y, x int
-}
+const (
+	expansion = 100
+)
 
-func Part1() int {
+func Part2() int {
 	lines := strings.Split(sample, "\n")[1:]
 	width := len(lines)
 	matrix := make([][]rune, width)
@@ -56,7 +55,7 @@ func Part1() int {
 		emptyColIdx := 0
 		for j := 0; j < width; j++ {
 			if matrix[i][j] == '#' {
-				galaxyCoords = append(galaxyCoords, coord{i + emptyRowsIdx, j + emptyColIdx})
+				galaxyCoords = append(galaxyCoords, coord{i + emptyRowsIdx*(expansion-1), j + emptyColIdx*(expansion-1)})
 			}
 			if emptyColIdx < len(emptyCols) && emptyCols[emptyColIdx] == j {
 				emptyColIdx++
@@ -66,6 +65,7 @@ func Part1() int {
 			emptyRowsIdx++
 		}
 	}
+	//fmt.Println(galaxyCoords)
 
 	sum := 0
 	for i, pointa := range galaxyCoords {
@@ -80,22 +80,11 @@ func Part1() int {
 	return sum
 }
 
-func distance(a, b coord) int {
-	return abs(a.x-b.x) + abs(a.y-b.y)
-}
-
-func abs(i int) int {
-	if i > 0 {
-		return i
-	}
-	return -i
-}
-
-func draw(matrix [][]rune) {
-	for i := 0; i < len(matrix); i++ {
-		for j := 0; j < len(matrix[i]); j++ {
-			fmt.Printf("%c", matrix[i][j])
-		}
-		fmt.Println()
-	}
-}
+//type expandedMatrix struct {
+//	orig                 [][]rune
+//	emptyRows, emptyCols []int
+//}
+//
+//func colsBetween(orig [][]rune, emptyRows, emptyCols []int, a, b coord) int {
+//
+//}
